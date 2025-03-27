@@ -5,8 +5,7 @@ on:
     branches:
       - main
   schedule:
-    # You can change the cron expression to suit your needs
-    - cron: "11 11 1 * *" # 11:11 AM on the 1st of every month
+    - cron: "11 11 1 * *"  # 11:11 AM on the 1st of every month
   workflow_dispatch:
 
 jobs:
@@ -22,19 +21,22 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Install Puppeteer browser
-      
+      - name: Install Google Chrome
         run: |
-          npm install puppeteer
-          npx puppeteer browsers install chrome
+          sudo apt-get update
+          sudo apt-get install -y wget gnupg
+          wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+          echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
 
       - name: Use Kaggle Badges Action
         uses: spider-man-tm/kaggle-badges@v1.2.6
         with:
-          # ex. user_name: spidermandance
           user_name: starlighter
-          # example of using GitHub Secrets
-          # user_name: ${{ secrets.KAGGLE_USERNAME }}
+        env:
+          # Point Puppeteer to the system-wide Chrome
+          PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome-stable
 
       - name: Commit and Push SVG files
         run: |

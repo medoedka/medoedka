@@ -2,8 +2,7 @@
 
 I am Data Scientist mainly focused on computer vision and extremely loving working with data.
 <div align="center">
-
-![](./kaggle-badges/CompetitionsRank/plastic-black.svg)
+<img src="./kaggle-plates/Competitions/white.svg" />
 </div>
 
 ### 💻 Current stack

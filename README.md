@@ -3,8 +3,7 @@
 I am Data Scientist mainly focused on computer vision and extremely loving working with data.
 <div align="center">
 
-![competition](https://road-to-kaggle-grandmaster.vercel.app/api/badges/starlighter/competition)
-
+![](./kaggle-badges/CompetitionsRank/plastic-black.svg)
 </div>
 
 ### 💻 Current stack
